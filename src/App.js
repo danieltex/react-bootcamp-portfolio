@@ -4,13 +4,9 @@ import SocialProfiles from './SocialProfiles';
 import profileImage from './assets/profile.png';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { displayBio: false };
-        this.toggleDisplayBio = this.toggleDisplayBio.bind(this);
-    }
+    state = { displayBio: false };
 
-    toggleDisplayBio() {
+    toggleDisplayBio = () => {
         this.setState({ displayBio: !this.state.displayBio });
     }
 
