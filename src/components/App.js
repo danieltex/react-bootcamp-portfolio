@@ -3,7 +3,7 @@ import Projects from './Projects';
 import SocialProfiles from './SocialProfiles';
 import Title from './Title';
 
-import profileImage from './assets/profile.jpg';
+import profileImage from '../assets/profile.jpg';
 
 class App extends Component {
     state = { displayBio: false };
