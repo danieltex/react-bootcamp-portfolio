@@ -11,14 +11,14 @@ class Jokes extends Component {
         fetch('https://official-joke-api.appspot.com/random_joke')
             .then(res => res.json())
             .then(json => this.setState({ joke: json }))
-            .catch(err => console.log(err.message));
+            .catch(err => alert(err.message));
     }
 
     fetchJokes = () => {
         fetch('https://official-joke-api.appspot.com/random_ten')
             .then(res => res.json())
             .then(json => this.setState({ jokes: json }))
-            .catch(err => console.log(err.message));
+            .catch(err => alert(err.message));
     }
 
     render() {        
