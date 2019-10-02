@@ -27,8 +27,6 @@ class Title extends Component {
     };
 
     componentWillUnmount() {
-        console.log('Title component will unmount');
-
         clearInterval(this.titleInterval);
         clearTimeout(this.timeout);
     }

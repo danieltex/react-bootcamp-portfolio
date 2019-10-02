@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header';
 
 const Joke = ({ joke: { setup, punchline } }) => (
     <p style={{ margin: 20 }}>{setup} <em>{punchline}</em></p>
@@ -6,24 +7,42 @@ const Joke = ({ joke: { setup, punchline } }) => (
 
 class Jokes extends Component {
     state = { joke: {}, jokes: [] };
+    controller = new AbortController();
 
     componentDidMount() {
-        fetch('https://official-joke-api.appspot.com/random_joke')
+        fetch('https://official-joke-api.appspot.com/random_joke', {
+            signal: this.controller.signal
+        })
             .then(res => res.json())
             .then(json => this.setState({ joke: json }))
-            .catch(err => alert(err.message));
+            .catch(err => {
+                if (err.name !== 'AbortError') {
+                 alert(err.message)
+                }
+            });
     }
 
     fetchJokes = () => {
-        fetch('https://official-joke-api.appspot.com/random_ten')
+        fetch('https://official-joke-api.appspot.com/random_ten', {
+            signal: this.controller.signal
+        })
             .then(res => res.json())
             .then(json => this.setState({ jokes: json }))
-            .catch(err => alert(err.message));
+            .catch(err => {
+                if (err.name !== 'AbortError') {
+                 alert(err.message)
+                }
+            });
+    }
+
+    componentWillUnmount() {
+        this.controller.abort();
     }
 
     render() {        
         return (
             <div>
+                <Header />
                 <h2>Highlighted joke</h2>
                 <Joke joke={this.state.joke}></Joke>
                 <hr />

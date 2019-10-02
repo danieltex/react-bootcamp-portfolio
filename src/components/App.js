@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Projects from './Projects';
 import SocialProfiles from './SocialProfiles';
 import Title from './Title';
+import Header from './Header';
 import profileImage from '../assets/profile.jpg';
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
 
         return (
             <div>
+                <Header />
                 <img src={profileImage} alt='profile' className='profile-image' />
                 <h1>Hello!</h1>
                 <p>My name is Daniel Santos.</p>
